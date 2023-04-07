@@ -1,3 +1,10 @@
 server/node_modules
 client/node_modules
 server/.env
+client/.env
+# next.js
+client/.next/
+client/out/
+
+# production
+client/build
