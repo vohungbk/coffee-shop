@@ -2,8 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 
-const authRouter = require("./routes/auth");
-const productRouter = require("./routes/product");
+const authRouter = require("../routes/auth");
+const productRouter = require("../routes/product");
 
 const connectDB = async () => {
   try {
