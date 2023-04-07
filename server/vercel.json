@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "coffee-shop-api-v1",
   "builds": [{ "src": "*.js", "use": "@vercel/node" }],
   "routes": [{ "src": "/(.*)", "dest": "/" }]
 }
