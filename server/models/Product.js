@@ -13,7 +13,6 @@ const ProductSchema = Schema({
   },
   category: {
     type: Array,
-    enum: ["Hot", "Cold"],
   },
   imgUrl: {
     type: String,

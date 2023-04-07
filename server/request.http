@@ -2,7 +2,7 @@ POST  http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "hungvo",
+  "username": "hungvo2",
   "password": "123456"
 }
 
@@ -15,3 +15,21 @@ Content-Type: application/json
   "username": "hungvo",
   "password": "123456"
 }
+
+
+###
+POST  http://localhost:5000/api/product
+Content-Type: application/json
+
+{
+  "name": "Capuchino",
+  "price": 56,
+  "star": 4.6,
+  "category": ["Hot"],
+  "imgUrl": "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRqPnxhzG50sOFqBgyKvZtmOHiB3mwkR2YtId5jZG5nApAoiSDkXMK4Rxxqpkfg0ZW9"
+}
+
+
+###
+GET  http://localhost:5000/api/product
+

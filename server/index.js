@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const authRouter = require("./routes/auth");
+const productRouter = require("./routes/product");
 
 const connectDB = async () => {
   try {
@@ -20,6 +21,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
+app.use("/api/product", productRouter);
 
 const PORT = 5000;
 
