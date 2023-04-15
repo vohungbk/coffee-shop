@@ -1,14 +1,14 @@
 {
   "version": 2,
   "builds": [{ "src": "*.js", "use": "@vercel/node" }],
-  "rewrites": [{ "source": "/api/(.*)", "destination": "index.js" }],
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
     },
     {
-      "source": "/vercel_app_domain_name/(.*)",
+      "source": "/coffee-milano.vercel.app/(.*)",
       "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
     }
   ]
