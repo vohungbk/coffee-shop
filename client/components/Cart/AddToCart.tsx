@@ -1,31 +1,40 @@
 import Image from 'next/image';
-import { useCallback } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { addToCart } from 'shared/services/home';
+import { Product } from 'shared/types/product';
 
 type Props = {
   padding?: string;
   imageWidth?: number;
   imageHeight?: number;
+  product: Product;
 };
 
 const AddToCart = ({
   padding = 'p-[5px]',
   imageWidth = 12,
   imageHeight = 12,
+  product,
 }: Props) => {
-  const tradeConnectMutation = useMutation('addToCart', addToCart, {
-    onSuccess: (response) => {
-      console.log(response);
+  const queryClient = useQueryClient();
+
+  const addToCartMutation = useMutation('addToCart', addToCart, {
+    onSuccess: () => {
+      window.scroll(0, 0);
+      queryClient.invalidateQueries(['cartList']);
     },
     onError: (errors) => {
       console.log(errors);
     },
   });
 
-  const handleAddToCart = useCallback(() => {
-    tradeConnectMutation.mutate();
-  }, [tradeConnectMutation]);
+  const handleAddToCart = () => {
+    const params = {
+      quantity: 1,
+      productId: product.id,
+    };
+    addToCartMutation.mutate(params);
+  };
 
   return (
     <div

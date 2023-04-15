@@ -1,16 +1,9 @@
 import Image from 'next/image';
-import AddToCart from './AddToCart';
+import AddToCart from './Cart/AddToCart';
 import Category from './Category';
+import { Product } from 'shared/types/product';
 type Props = {
-  data: {
-    id: number;
-    name: string;
-    price: number;
-    star: number;
-    category?: string[];
-    imgUrl: string;
-    description?: string;
-  };
+  data: Product;
   className?: string;
 };
 
@@ -62,7 +55,7 @@ const CardItems = ({ data, className }: Props) => {
               </span>
             )}
           </div>
-          <AddToCart padding="p-[13px]" imageWidth={17} imageHeight={17} />
+          <AddToCart padding="p-[13px]" imageWidth={17} imageHeight={17} product={data}/>
         </div>
       </div>
     </div>

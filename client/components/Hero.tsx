@@ -1,8 +1,21 @@
 import Image from 'next/image';
-import AddToCart from './AddToCart';
+import AddToCart from './Cart/AddToCart';
 import Header from './Header';
+import useDataQuery from 'hooks/useQueryData';
+import { getAllProduct } from 'shared/services/home';
+import { ProductResponse } from 'shared/types/product';
 
-const Hero = () => {
+type Props = {
+  handleClickMoreMenu: () => void;
+};
+
+const Hero = ({ handleClickMoreMenu }: Props) => {
+  const { data } = useDataQuery('product', () =>
+    getAllProduct()
+  ) as ProductResponse;
+
+  const product = data?.product?.[0];
+
   return (
     <div className="bg-[#F7EBDA] pt-9 relative">
       <div className="container my-0 mx-auto relative z-10 pb-[396px]">
@@ -23,9 +36,12 @@ const Hero = () => {
                 style={{ boxShadow: '0px 4px 32px rgba(223, 195, 124, 0.25)' }}
               >
                 <span className="text-white font-semibold">Order now</span>
-                <AddToCart />
+                {product && <AddToCart product={product} />}
               </button>
-              <button className="bg-transparent text-primary px-8 py-[10px]">
+              <button
+                className="bg-transparent text-primary px-8 py-[10px]"
+                onClick={handleClickMoreMenu}
+              >
                 More menu
               </button>
             </div>
@@ -45,7 +61,7 @@ const Hero = () => {
               className="backdrop-blur-[2px] rounded-[42px] p-[6px] absolute top-[25px] left-0 sm:-left-[74px]"
             >
               <div className="bg-white rounded-[42px] text-center py-[14px] px-[27px] text-secondary font-semibold text-2xl min-w-[225px]">
-                Cappuccino
+                {product?.name}
               </div>
             </div>
             <div
@@ -56,7 +72,7 @@ const Hero = () => {
               className="backdrop-blur-[2px] rounded-[42px] p-[6px] absolute top-[140px] sm:top-[88px] right-0 sm:-right-[36px]"
             >
               <div className="bg-white rounded-[42px] text-center py-[14px] px-[27px] text-secondary font-semibold text-2xl min-w-[150px] flex justify-center gap-1">
-                4.8
+                {product?.star}
                 <Image
                   src={'assets/star.svg'}
                   alt="logo"
@@ -73,7 +89,7 @@ const Hero = () => {
               className="backdrop-blur-[2px] rounded-[42px] p-[6px] absolute bottom-[23px] left-[15px]"
             >
               <div className="bg-white rounded-[42px] py-[14px] px-[27px] text-secondary font-semibold text-2xl min-w-[150px] flex justify-center">
-                18K
+                {product?.price}K
               </div>
             </div>
           </div>

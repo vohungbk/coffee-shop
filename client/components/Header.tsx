@@ -1,8 +1,15 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import CartIcon from './Cart/CartNavbar';
+import Link from 'next/link';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const scrollToId = (id: string) => {
+    const access = document.getElementById(id);
+    access?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <header className="flex items-center justify-between px-2 lg:px-0">
@@ -25,19 +32,31 @@ const Header = () => {
       <div className="flex-1 text-center">
         <ul className="items-center justify-center gap-8 hidden lg:flex">
           <li className="text-[18px] hover:text-primary">
-            <a className="before:bg-primary before:absolute before:h-[2px] before:w-0 hover:before:w-full before:content-[''] before:-bottom-1 before:transition-all before:duration-500 relative">
+            <Link
+              href="#about"
+              className="before:bg-primary before:absolute before:h-[2px] before:w-0 hover:before:w-full before:content-[''] before:-bottom-1 before:transition-all before:duration-500 relative"
+              onClick={() => scrollToId('about')}
+            >
               About us
-            </a>
+            </Link>
           </li>
           <li className="text-[18px] hover:text-primary">
-            <a className="before:bg-primary before:absolute before:h-[2px] before:w-0 hover:before:w-full before:content-[''] before:-bottom-1 before:transition-all before:duration-500 relative">
+            <Link
+              href="#our-product"
+              className="before:bg-primary before:absolute before:h-[2px] before:w-0 hover:before:w-full before:content-[''] before:-bottom-1 before:transition-all before:duration-500 relative"
+              onClick={() => scrollToId('product')}
+            >
               Our Product
-            </a>
+            </Link>
           </li>
           <li className="text-[18px] hover:text-primary">
-            <a className="before:bg-primary before:absolute before:h-[2px] before:w-0 hover:before:w-full before:content-[''] before:-bottom-1 before:transition-all before:duration-500 relative">
+            <Link
+              href="#delivery"
+              className="before:bg-primary before:absolute before:h-[2px] before:w-0 hover:before:w-full before:content-[''] before:-bottom-1 before:transition-all before:duration-500 relative"
+              onClick={() => scrollToId('delivery')}
+            >
               Delivery
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -84,7 +103,7 @@ const Header = () => {
             />
           </div>
         </div>
-        <Image src={'assets/cart.svg'} alt="logo" width={32} height={32} />
+        <CartIcon />
         {menuOpen ? (
           <Image
             src={'/assets/x-icon.webp'}

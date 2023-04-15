@@ -33,3 +33,7 @@ a {
     max-width: 1250px;
   }
 }
+
+input:focus {
+  outline: none;
+}

@@ -2,12 +2,11 @@ import Head from 'next/head';
 import Hero from '@components/Hero';
 import CardItems from '@components/CardItems';
 import Image from 'next/image';
-import { getOrderSaleEventInfo } from 'shared/services/home';
-import useQueryData from 'hooks/useQueryData';
+import { useCallback, useRef } from 'react';
 
 const PopularData = [
   {
-    id: 1,
+    id: '642fe69d6800e9c0f154b0d2',
     name: 'Vanilla Latte',
     price: 21,
     star: 4.8,
@@ -15,7 +14,7 @@ const PopularData = [
     imgUrl: '/assets/img_product_1.png',
   },
   {
-    id: 2,
+    id: '6432d67069aa5e02076dfeef',
     name: 'Espresso',
     price: 12,
     star: 4.8,
@@ -23,7 +22,7 @@ const PopularData = [
     imgUrl: '/assets/img_product_2.png',
   },
   {
-    id: 3,
+    id: '3',
     name: 'Hazelnut Latte',
     price: 23,
     star: 4.8,
@@ -55,7 +54,7 @@ const DeliveryServices = [
 
 const SpecialMenu = [
   {
-    id: 1,
+    id: '1',
     name: 'Sandwich',
     price: 12,
     star: 4.8,
@@ -63,7 +62,7 @@ const SpecialMenu = [
     description: 'bread with meat and vegetables',
   },
   {
-    id: 2,
+    id: '2',
     name: 'Hot Milk',
     price: 12,
     star: 4.8,
@@ -71,7 +70,7 @@ const SpecialMenu = [
     description: 'Hot Milk with less sugar',
   },
   {
-    id: 3,
+    id: '3',
     name: 'Coffee Ice Cream',
     price: 12,
     star: 4.8,
@@ -79,7 +78,7 @@ const SpecialMenu = [
     description: 'Coffee with ice cream vanilla',
   },
   {
-    id: 4,
+    id: '4',
     name: 'Cappucino',
     price: 12,
     star: 4.8,
@@ -87,7 +86,7 @@ const SpecialMenu = [
     description: 'Hot Cappucino',
   },
   {
-    id: 5,
+    id: '5',
     name: 'Mochaccino',
     price: 21,
     star: 4.8,
@@ -95,7 +94,7 @@ const SpecialMenu = [
     description: 'Hot Mochaccino ',
   },
   {
-    id: 6,
+    id: '6',
     name: 'Waffle Ice Cream',
     price: 21,
     star: 4.8,
@@ -126,11 +125,14 @@ const User = [
 ];
 
 export default function Home() {
-  const { data: saleEventInfo } = useQueryData(['getOrderSaleEventInfo'], () =>
-    getOrderSaleEventInfo()
-  );
-
-  console.log(saleEventInfo);
+  const popularRef = useRef<HTMLDivElement>(null);
+  const handleClickMoreMenu = useCallback(() => {
+    window.scrollTo({
+      top: popularRef?.current?.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, []);
 
   return (
     <>
@@ -143,9 +145,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Hero />
+      <Hero handleClickMoreMenu={handleClickMoreMenu} />
       <section className="-mt-[300px]">
-        <section className="container m-0 sm:m-auto relative pl-3 pr-3 sm:pl-[49px] sm:pr-[64px] pb-10 pt-5 sm:pt-0 sm:pb-[67px]">
+        <div
+          className="container m-0 sm:m-auto relative pl-3 pr-3 sm:pl-[49px] sm:pr-[64px] pb-10 pt-5 sm:pt-0 sm:pb-[67px]"
+          ref={popularRef}
+        >
           <p className="font-semibold text-[32px] relative before:content-[''] before:absolute before:right-0 before:-bottom-[6px] before:bg-primary before:rounded-xl before:w-[74px] before:h-1 inline-block mb-5 sm:mb-[38px] z-20">
             Popular Now
           </p>
@@ -165,9 +170,12 @@ export default function Home() {
           </div>
 
           <div className="absolute bottom-0 left-0 right-0 h-full lg:h-[376px] bg-accents rounded-[64px]"></div>
-        </section>
+        </div>
       </section>
-      <section className="mt-[120px] container m-auto px-[48px] pb-[120px] lg:pb-[208px]">
+      <section
+        className="mt-[120px] container m-auto px-[48px] pb-[120px] lg:pb-[208px]"
+        id="delivery"
+      >
         <h2 className="font-semibold text-[32px] leading-[48px] relative before:content-[''] before:absolute before:right-0 before:-bottom-[6px] before:bg-primary before:rounded-xl before:w-[123px] before:h-1 inline-block mb-8">
           How to use delivery service
         </h2>
@@ -188,7 +196,7 @@ export default function Home() {
       </section>
       <section className="bg-exclude h-[484px] bg-[#F6EBDA] bg-no-repeat bg-100% bg-blend-overlay relative pt-10 sm:pt-[84px]">
         <div
-          className="rounded-xl p-[5px] w-[370px] absolute left-[235px] -top-[88px] hidden lg:block"
+          className="rounded-xl p-[5px] w-[370px] absolute lg:left-[100px] xl:left-[235px] -top-[88px] hidden lg:block"
           style={{
             background:
               'linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%)',
@@ -201,7 +209,7 @@ export default function Home() {
             height={497}
           />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4" id="about">
           <div className="col-start-2 col-span-4">
             <h2 className="font-semibold text-[32px] leading-[48px] relative before:content-[''] before:absolute before:right-0 before:-bottom-[6px] before:bg-primary before:rounded-xl before:w-[43px] before:h-1 mb-[30px] inline-block">
               About us
@@ -220,7 +228,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="py-10 sm:py-[120px] px-3 sm:px-6 lg:px-[146px] bg-white">
+      <section
+        className="py-10 sm:py-[120px] px-3 sm:px-6 lg:px-[146px] bg-white"
+        id="product"
+      >
         <h2 className="font-semibold text-[32px] leading-[48px] relative before:content-[''] before:absolute before:right-0 before:-bottom-[6px] before:bg-primary before:rounded-xl before:w-[121px] before:h-1 mb-[34px] inline-block">
           Special menu for you
         </h2>
