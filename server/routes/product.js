@@ -8,7 +8,7 @@ const Product = require("../models/Product");
 //@access Public
 router.get("/", async (req, res) => {
   try {
-    const product = new Product();
+    const product = await Product.find();
     res.json({ success: true, product });
   } catch (error) {
     res.status(500).json({ success: false, message: "Internal server error" });
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
       price,
       star,
       category: category || ["Hot"],
-      imgUrl: imgUrl.startsWith("https://") ? imgUrl : `https://${imgUrl}`,
+      imgUrl,
     });
     await newProduct.save();
     res.json({ success: true, message: "Happy drinking!", product: newProduct });

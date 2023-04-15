@@ -4,9 +4,11 @@ const Schema = mongoose.Schema;
 const ProductSchema = Schema({
   name: {
     type: String,
+    required: true,
   },
   price: {
     type: Number,
+    required: true,
   },
   star: {
     type: Number,
@@ -16,6 +18,7 @@ const ProductSchema = Schema({
   },
   imgUrl: {
     type: String,
+    required: true,
   },
 });
 

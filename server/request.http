@@ -22,14 +22,36 @@ POST  http://localhost:5000/api/product
 Content-Type: application/json
 
 {
-  "name": "Capuchino",
-  "price": 56,
-  "star": 4.6,
-  "category": ["Hot"],
-  "imgUrl": "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRqPnxhzG50sOFqBgyKvZtmOHiB3mwkR2YtId5jZG5nApAoiSDkXMK4Rxxqpkfg0ZW9"
+  "name": "Cappucino",
+  "price": 10,
+  "star": 4.7,
+  "category": ["Cold", "Hot"],
+  "imgUrl": "https://plus.unsplash.com/premium_photo-1673107321914-d1c327b86fce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
 }
 
 
 ###
 GET  http://localhost:5000/api/product
+
+
+###
+GET  http://localhost:5000/api/cart
+
+
+
+###
+POST http://localhost:5000/api/cart/addToCart
+Content-Type: application/json
+
+{
+  "productId": "6432e45bf6e8648fde8509c9",
+  "quantity": 2
+}
+
+###
+POST http://localhost:5000/api/cart/emptyCart
+
+
+
+
 

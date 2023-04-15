@@ -13,7 +13,6 @@ router.post("/register", async (req, res) => {
   if (!username) return res.status(400).json({ success: false, message: "Missing username and/or password" });
   try {
     const user = await User.findOne({ username });
-    console.log(username);
 
     if (user) return res.status(400).json({ success: false, message: "Username already taken" });
 
