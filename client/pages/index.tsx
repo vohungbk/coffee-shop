@@ -3,35 +3,9 @@ import Hero from '@components/Hero';
 import CardItems from '@components/CardItems';
 import Image from 'next/image';
 import { useCallback, useRef } from 'react';
-
-const PopularData = [
-  {
-    id: '6432e45bf6e8648fde8509c9',
-    name: 'Vanilla Latte',
-    price: 21,
-    star: 4.8,
-    category: ['Hot', 'Cold'],
-    imgUrl:
-      'http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRqPnxhzG50sOFqBgyKvZtmOHiB3mwkR2YtId5jZG5nApAoiSDkXMK4Rxxqpkfg0ZW9',
-  },
-  {
-    id: '643a161c8148db3e2df8d40c',
-    name: 'Espresso',
-    price: 12,
-    star: 4.8,
-    category: ['Hot', 'Cold'],
-    imgUrl:
-      'https://plus.unsplash.com/premium_photo-1673107321914-d1c327b86fce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80',
-  },
-  {
-    id: '643a161c8148db3e2df8d40c',
-    name: 'Hazelnut Latte',
-    price: 23,
-    star: 4.8,
-    category: ['Hot', 'Cold'],
-    imgUrl: '/assets/img_product_3.png',
-  },
-];
+import { ProductResponse } from 'shared/types/product';
+import useDataQuery from 'hooks/useQueryData';
+import { getAllProduct } from 'shared/services/home';
 
 const DeliveryServices = [
   {
@@ -51,57 +25,6 @@ const DeliveryServices = [
     title: 'Enjoy your coffee',
     subTitle: 'Choose delivery service',
     imgUrl: '/assets/food-truck.png',
-  },
-];
-
-const SpecialMenu = [
-  {
-    id: '1',
-    name: 'Sandwich',
-    price: 12,
-    star: 4.8,
-    imgUrl: '/assets/sandwich.png',
-    description: 'bread with meat and vegetables',
-  },
-  {
-    id: '2',
-    name: 'Hot Milk',
-    price: 12,
-    star: 4.8,
-    imgUrl: '/assets/img_product_4.png',
-    description: 'Hot Milk with less sugar',
-  },
-  {
-    id: '3',
-    name: 'Coffee Ice Cream',
-    price: 12,
-    star: 4.8,
-    imgUrl: '/assets/img_product_5.png',
-    description: 'Coffee with ice cream vanilla',
-  },
-  {
-    id: '4',
-    name: 'Cappucino',
-    price: 12,
-    star: 4.8,
-    imgUrl: '/assets/img_product_6.png',
-    description: 'Hot Cappucino',
-  },
-  {
-    id: '5',
-    name: 'Mochaccino',
-    price: 21,
-    star: 4.8,
-    imgUrl: '/assets/img_product_7.png',
-    description: 'Hot Mochaccino ',
-  },
-  {
-    id: '6',
-    name: 'Waffle Ice Cream',
-    price: 21,
-    star: 4.8,
-    imgUrl: '/assets/img_product_8.png',
-    description: 'Waffle with Ice cream',
   },
 ];
 
@@ -128,6 +51,10 @@ const User = [
 
 export default function Home() {
   const popularRef = useRef<HTMLDivElement>(null);
+  const { data } = useDataQuery('product', () =>
+    getAllProduct()
+  ) as ProductResponse;
+
   const handleClickMoreMenu = useCallback(() => {
     window.scrollTo({
       top: popularRef?.current?.offsetTop,
@@ -147,7 +74,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Hero handleClickMoreMenu={handleClickMoreMenu} />
+      <Hero handleClickMoreMenu={handleClickMoreMenu} product={data?.product} />
       <section className="-mt-[300px]">
         <div
           className="container m-0 sm:m-auto relative pl-3 pr-3 sm:pl-[49px] sm:pr-[64px] pb-10 pt-5 sm:pt-0 sm:pb-[67px]"
@@ -157,9 +84,9 @@ export default function Home() {
             Popular Now
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-[38px]">
-            {PopularData?.map((item) => (
+            {data?.product?.slice(0, 3)?.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 style={{
                   background:
                     'linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.7) 100%)',
@@ -238,13 +165,16 @@ export default function Home() {
           Special menu for you
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {SpecialMenu?.map((item) => (
-            <CardItems
-              key={item.id}
-              data={item}
-              className="drop-shadow-custom"
-            />
-          ))}
+          {data?.product
+            ?.filter((item) => item?.type === 'special')
+            .sort((record1, record2) => record2.star - record1.star)
+            .map((item) => (
+              <CardItems
+                key={item._id}
+                data={item}
+                className="drop-shadow-custom"
+              />
+            ))}
         </div>
       </section>
       <section className="relative">

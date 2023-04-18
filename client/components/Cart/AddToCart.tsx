@@ -31,8 +31,9 @@ const AddToCart = ({
   const handleAddToCart = () => {
     const params = {
       quantity: 1,
-      productId: product.id,
+      productId: product._id,
     };
+
     addToCartMutation.mutate(params);
   };
 

@@ -20,15 +20,19 @@ Content-Type: application/json
 ###
 POST  http://localhost:5000/api/product
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDJkYTZlNjM2MDIzNzU5NDEyNmNjZDkiLCJpYXQiOjE2ODE4MTA2MDJ9.zsY80o8ygDCHqtLngmo7-x4mYiQUaeXdwtpXDSMRWW4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDJkYTZlNjM2MDIzNzU5NDEyNmNjZDkiLCJpYXQiOjE2ODE4MzAwOTl9.pMMYCA0TScqxzSMipXiqP7Lzo2bDMzra3xwkVx6ksWY
 
 {
-  "name": "Cappucino",
-  "price": 10,
-  "star": 4.7,
+  "name": "Sandwich",
+  "price": 12,
+  "star": 5,
   "category": ["Cold", "Hot"],
-  "imgUrl": "https://plus.unsplash.com/premium_photo-1673107321914-d1c327b86fce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
+  "imgUrl": "https://iili.io/HvU0qxV.jpg",
+  "type": "special",
+  "description": "Bread with meat and vegetables"
+ 
 }
+
 
 
 ###
@@ -57,7 +61,7 @@ POST http://localhost:5000/api/cart/emptyCart
 ###
 PUT http://localhost:5000/api/product/643e652d269a1e84faa53415
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDJkYTZlNjM2MDIzNzU5NDEyNmNjZDkiLCJpYXQiOjE2ODE4MTA2MDJ9.zsY80o8ygDCHqtLngmo7-x4mYiQUaeXdwtpXDSMRWW4
+Authorization: Bearer .eyJ1c2VySWQiOiI2NDJkYTZlNjM2MDIzNzU5NDEyNmNjZDkiLCJpYXQiOjE2ODE4MTA2MDJ9.zsY80o8ygDCHqtLngmo7-x4mYiQUaeXdwtpXDSMRWW4
 
 {
   "name": "Cappucino",

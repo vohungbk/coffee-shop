@@ -8,6 +8,7 @@ export type Cart = {
         id: string;
         quantity: number;
         productId: string;
+        total: number;
       }[];
       itemCount: number;
       subTotal: number;

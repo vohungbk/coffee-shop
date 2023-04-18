@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 // @desc Create a product
 // @access Private
 router.post("/", verifyToken, async (req, res) => {
-  const { name, price, star, category, imgUrl } = req.body;
+  const { name, price, star, category, imgUrl, type, description } = req.body;
   if (!name) return res.status(400).json({ success: false, message: "Name is required" });
   try {
     const newProduct = new Product({
@@ -30,6 +30,8 @@ router.post("/", verifyToken, async (req, res) => {
       category: category || ["Hot"],
       imgUrl,
       user: req.userId,
+      type,
+      description,
     });
     await newProduct.save();
     res.json({ success: true, message: "Happy drinking!", product: newProduct });

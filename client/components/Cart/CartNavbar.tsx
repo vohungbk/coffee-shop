@@ -53,7 +53,7 @@ const CartIcon = () => {
         className="cursor-pointer"
       />
       {!!data?.cart?.itemCount && (
-        <span className="absolute -top-[10px] -right-[5px] h-5 w-5 flex items-center justify-center bg-primary rounded-full">
+        <span className="absolute -top-[10px] -right-[5px] h-5 w-5 flex items-center justify-center bg-primary rounded-full group-hover:scale-110">
           {data?.cart?.itemCount}
         </span>
       )}

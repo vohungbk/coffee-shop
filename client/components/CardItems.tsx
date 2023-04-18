@@ -41,7 +41,7 @@ const CardItems = ({ data, className }: Props) => {
           }`}
         >
           <p className="text-secondary font-semibold text-2xl">{data.name}</p>
-          <p className="text-secondary font-bold text-2xl">{data.price} K</p>
+          <p className="text-secondary font-bold text-2xl">{data.price}$</p>
         </div>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
@@ -55,7 +55,12 @@ const CardItems = ({ data, className }: Props) => {
               </span>
             )}
           </div>
-          <AddToCart padding="p-[13px]" imageWidth={17} imageHeight={17} product={data}/>
+          <AddToCart
+            padding="p-[13px]"
+            imageWidth={17}
+            imageHeight={17}
+            product={data}
+          />
         </div>
       </div>
     </div>
