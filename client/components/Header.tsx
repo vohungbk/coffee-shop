@@ -2,8 +2,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 import CartIcon from './Cart/CartNavbar';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Header = () => {
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToId = (id: string) => {
@@ -12,8 +14,8 @@ const Header = () => {
   };
 
   return (
-    <header className="flex items-center justify-between px-2 lg:px-0">
-      <div>
+    <header className="flex items-center justify-between px-5 sm:px-2 lg:px-0">
+      <div onClick={() => router.push('/')} className="cursor-pointer">
         <Image
           src={'assets/logo_coffe.svg'}
           alt="logo"

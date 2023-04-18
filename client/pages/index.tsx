@@ -6,23 +6,25 @@ import { useCallback, useRef } from 'react';
 
 const PopularData = [
   {
-    id: '642fe69d6800e9c0f154b0d2',
+    id: '6432e45bf6e8648fde8509c9',
     name: 'Vanilla Latte',
     price: 21,
     star: 4.8,
     category: ['Hot', 'Cold'],
-    imgUrl: '/assets/img_product_1.png',
+    imgUrl:
+      'http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRqPnxhzG50sOFqBgyKvZtmOHiB3mwkR2YtId5jZG5nApAoiSDkXMK4Rxxqpkfg0ZW9',
   },
   {
-    id: '6432d67069aa5e02076dfeef',
+    id: '643a161c8148db3e2df8d40c',
     name: 'Espresso',
     price: 12,
     star: 4.8,
     category: ['Hot', 'Cold'],
-    imgUrl: '/assets/img_product_2.png',
+    imgUrl:
+      'https://plus.unsplash.com/premium_photo-1673107321914-d1c327b86fce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80',
   },
   {
-    id: '3',
+    id: '643a161c8148db3e2df8d40c',
     name: 'Hazelnut Latte',
     price: 23,
     star: 4.8,
