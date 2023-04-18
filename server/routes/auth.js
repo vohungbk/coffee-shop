@@ -5,12 +5,12 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 
-//@router POST api/auth/register
-//@desc Register user
-//@access Public
+// @router POST api/auth/register
+// @desc Register user
+// @access Public
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
-  if (!username) return res.status(400).json({ success: false, message: "Missing username and/or password" });
+  if (!username || !password) return res.status(400).json({ success: false, message: "Missing username and/or password" });
   try {
     const user = await User.findOne({ username });
 
@@ -35,9 +35,9 @@ router.post("/register", async (req, res) => {
   }
 });
 
-//@router POST api/auth/login
-//@desc Login
-//@access Public
+// @router POST api/auth/login
+// @desc Login
+// @access Public
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) return res.status(400).json({ success: false, message: "Missing username and/or password" });
