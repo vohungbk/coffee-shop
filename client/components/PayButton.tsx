@@ -1,4 +1,3 @@
-import { useAuth } from 'context/auth';
 import React from 'react';
 import Api from 'shared/config/api';
 import { CartItems } from 'shared/types/cart';
@@ -9,13 +8,10 @@ type Props = {
 };
 
 const PayButton = ({ cartItems, className }: Props) => {
-  const { user } = useAuth() || {};
-
   const handleCheckout = () => {
     Api.post('/stripe/create-checkout-session', {
       data: {
         cartItems,
-        userId: user._id,
       },
     })
       .then((response) => {

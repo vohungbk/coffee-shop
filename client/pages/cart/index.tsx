@@ -206,7 +206,7 @@ const Cart = () => {
               <div className="absolute right-5 top-0 w-[350px] h-full">
                 <div className="lg:sticky lg:t-[254px]">
                   <div className="md:rounded-none relative mb-[18px] bg-[#eeeff4] border border-solid border-t-[#dfdfdf] border-b-[#dfdfdf]">
-                    <div className="relative p-5">
+                    <div className="relative p-5 z-10">
                       <div className="flex justify-between items-center mb-1 font-semibold">
                         <span>Total</span>
                         <span>{data?.cart.subTotal}$</span>
