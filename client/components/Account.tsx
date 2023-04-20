@@ -99,10 +99,10 @@ const Account = () => {
         <div
           style={{ boxShadow: '0 1px 1px 1px #F9D9AA' }}
           className={classNames(
-            `absolute w-screen left-0 top-full z-10 opacity-0 transition ease-in-out duration-300 will-change-transform bg-[#F7EBDA] text-[#222222] text-center sm:w-auto sm:min-w-[320px] sm:-right-[5px] sm:lg:top-[calc(100%_+_15px) sm:left-auto rounded-[3px] ${
+            `absolute w-screen left-0 top-full opacity-0 transition ease-in-out duration-300 will-change-transform bg-[#F7EBDA] text-[#222222] text-center sm:w-auto sm:min-w-[320px] sm:-right-[5px] sm:lg:top-[calc(100%_+_15px) sm:left-auto rounded-[3px] ${
               isShowPopup
-                ? 'visible scale-100 ease-linear duration-300'
-                : 'invisible scale-90'
+                ? 'visible scale-100 ease-linear duration-300 z-10'
+                : 'invisible scale-90 z-0'
             }`,
             {
               'opacity-100': isShowPopup,
@@ -305,10 +305,10 @@ const Account = () => {
       <div
         style={{ boxShadow: '0 1px 5px 2px #F9D9AA' }}
         className={classNames(
-          `absolute w-screen left-0 top-full z-10 opacity-0 transition ease-in-out duration-[200ms] will-change-transform bg-[#F7EBDA] text-[#222222] text-center sm:w-auto sm:min-w-[160px] sm:-right-[47px] sm:lg:top-[calc(100%_+_15px) sm:left-auto rounded-[3px] ${
+          `absolute w-screen left-0 top-full opacity-0 transition ease-in-out duration-[200ms] will-change-transform bg-[#F7EBDA] text-[#222222] text-center sm:w-auto sm:min-w-[160px] sm:-right-[47px] sm:lg:top-[calc(100%_+_15px) sm:left-auto rounded-[3px] ${
             isShowProfileMenu
-              ? 'visible scale-100 ease-linear duration-[250ms]'
-              : 'invisible scale-90'
+              ? 'visible scale-100 ease-linear duration-[250ms] z-10 '
+              : 'invisible scale-90 z-0'
           }`,
           {
             'opacity-100': isShowProfileMenu,
