@@ -2,8 +2,10 @@ POST  http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "hungvo2",
-  "password": "123456"
+  "email": "hungvo1@gmail.com",
+  "password": "123456",
+  "firstName": "Hung",
+  "lastName": "Vo"
 }
 
 
@@ -12,7 +14,7 @@ POST  http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "hungvo",
+  "email": "hungvo2@gmail.com",
   "password": "123456"
 }
 
@@ -75,6 +77,13 @@ Authorization: Bearer .eyJ1c2VySWQiOiI2NDJkYTZlNjM2MDIzNzU5NDEyNmNjZDkiLCJpYXQiO
 DELETE  http://localhost:5000/api/product/643e652d269a1e84faa53415
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDJkYTZlNjM2MDIzNzU5NDEyNmNjZDkiLCJpYXQiOjE2ODE4MTA2MDJ9.zsY80o8ygDCHqtLngmo7-x4mYiQUaeXdwtpXDSMRWW4
+
+
+
+###
+GET http://localhost:5000/api/auth/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDJkYTZlNjM2MDIzNzU5NDEyNmNjZDkiLCJpYXQiOjE2ODE4OTkwNzJ9.AvrkFR5OsuQJG3yanEBqnWpj2BPx6rkCZUYd07F3o_0
 
 
 

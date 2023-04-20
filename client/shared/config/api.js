@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_URL } from 'shared/constants/common';
+import Cookies from 'js-cookie';
 
 const defaultOptions = {
   withCredentials: false,
@@ -9,6 +10,7 @@ const headerDefault = () => {
   return {
     'Content-Type': 'application/json',
     Accept: 'application/json',
+    Authorization: `Bearer ${Cookies.get('accessToken')}`,
   };
 };
 

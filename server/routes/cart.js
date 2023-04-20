@@ -135,20 +135,4 @@ router.post("/emptyCart", async (req, res) => {
   }
 });
 
-// router.delete("/:id", async (req, res) => {
-//   const productId = req.params.id;
-//   if (!productId) return res.status(400).json({ success: false, message: "Bad request" });
-//   try {
-//     let carts = await Cart.find().populate({
-//       path: "items.productId",
-//       select: "name price total",
-//     });
-//     const cart = carts?.[0];
-
-//     console.log({ cart });
-//   } catch (error) {
-//     console.log({ error });
-//   }
-// });
-
 module.exports = router;

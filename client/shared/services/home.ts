@@ -18,3 +18,7 @@ export const addToCart = (params: { quantity: number; productId: string }) => {
 export const getAllCart = () => {
   return api.get(`cart`).then((response: any) => response?.data as Cart);
 };
+
+export const emptyCart = () => {
+  return api.post(`cart/emptyCart`);
+};

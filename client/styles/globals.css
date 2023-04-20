@@ -37,3 +37,8 @@ a {
 input:focus {
   outline: none;
 }
+
+.form__field:focus + .form__floating-label,
+.form__field:not(:placeholder-shown) + .form__floating-label {
+  transform: translateY(-6px) scale(0.8);
+}

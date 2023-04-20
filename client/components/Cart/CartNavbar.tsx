@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useCallback } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { addToCart } from 'shared/services/home';
+import PayButton from '@components/PayButton';
 
 const CartIcon = () => {
   const { data } = useDataQuery('cartList', () => getAllCart()) as Cart;
@@ -53,7 +54,7 @@ const CartIcon = () => {
         className="cursor-pointer"
       />
       {!!data?.cart?.itemCount && (
-        <span className="absolute -top-[10px] -right-[5px] h-5 w-5 flex items-center justify-center bg-primary rounded-full group-hover:scale-110">
+        <span className="absolute -top-[10px] -right-[5px] h-5 w-5 flex items-center justify-center bg-primary rounded-full group-hover:scale-110 transition-transform duration-200">
           {data?.cart?.itemCount}
         </span>
       )}
@@ -155,9 +156,10 @@ const CartIcon = () => {
                   >
                     View cart
                   </Link>
-                  <button className="m-[10px] flex-1 bg-primary text-white relative inline-block px-[30px] text-center transition rounded-[2px] leading-[48px] hover:opacity-90">
-                    Check out
-                  </button>
+                  <PayButton
+                    cartItems={data?.cart?.items}
+                    className="m-[10px] flex-1 bg-primary text-white relative inline-block px-[30px] text-center transition rounded-[2px] leading-[48px] hover:opacity-90"
+                  />
                 </div>
               </div>
             </div>

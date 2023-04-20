@@ -1,4 +1,5 @@
 import Header from '@components/Header';
+import PayButton from '@components/PayButton';
 import useDataQuery from 'hooks/useQueryData';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -213,9 +214,7 @@ const Cart = () => {
                       <div className="break-words my-5 text-[#4e5458">
                         <p>Tax included. Shipping calculated at checkout</p>
                       </div>
-                      <button className="w-full bg-primary text-white px-[30px] text-center leading-[55px] transition hover:opacity-90">
-                        Check out
-                      </button>
+                      <PayButton cartItems={data?.cart.items} />
                     </div>
                   </div>
                 </div>

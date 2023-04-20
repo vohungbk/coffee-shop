@@ -26,6 +26,9 @@ module.exports = {
       dropShadow: {
         custom: '0px 6px 16px rgba(0, 0, 0, 0.16)',
       },
+      boxShadow: {
+        light: '0 1px 5px 2px #F9D9AA',
+      },
     },
   },
   variants: {

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import CartIcon from './Cart/CartNavbar';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Account from './Account';
 
 const Header = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex items-center justify-between px-5 sm:px-2 lg:px-0">
+    <header className="flex items-center justify-between px-5 sm:px-2 lg:px-0 relative">
       <div onClick={() => router.push('/')} className="cursor-pointer">
         <Image
           src={'assets/logo_coffe.svg'}
@@ -94,7 +95,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="flex items-center gap-6">
-        <div className="relative">
+        <div className="relative hidden sm:block">
           <input className="bg-[#FFFFFF] rounded-[35px] py-[11px] pl-[52px] focus:outline-none text-[12px] leading-[18px] w-[150px] sm:w-[200px] lg:w-[222px]" />
           <div className="absolute left-3 top-[calc(50%_-_16px)]">
             <Image
@@ -105,6 +106,7 @@ const Header = () => {
             />
           </div>
         </div>
+        <Account />
         <CartIcon />
         {menuOpen ? (
           <Image

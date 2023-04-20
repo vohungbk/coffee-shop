@@ -6,6 +6,7 @@ const cors = require("cors");
 const authRouter = require("./routes/auth");
 const productRouter = require("./routes/product");
 const cartRouter = require("./routes/cart");
+const stripeRouter = require("./routes/stripe");
 
 const connectDB = async () => {
   try {
@@ -27,6 +28,7 @@ app.get("/api/test", (req, res) => {
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/cart", cartRouter);
+app.use("/api/stripe", stripeRouter);
 
 const PORT = 5000;
 
