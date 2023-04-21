@@ -85,7 +85,7 @@ const Hero = ({ handleClickMoreMenu, product }: Props) => {
               className="backdrop-blur-[2px] rounded-[42px] p-[6px] absolute bottom-[23px] left-[15px]"
             >
               <div className="bg-white rounded-[42px] py-[14px] px-[27px] text-secondary font-semibold text-2xl min-w-[150px] flex justify-center">
-                {item?.price}K
+                {item?.price}$
               </div>
             </div>
           </div>
