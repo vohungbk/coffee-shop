@@ -215,7 +215,7 @@ export default function Home() {
           className="py-[133px] rounded-3xl flex justify-center items-center flex-col"
           style={{
             background:
-              'linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/assets/bg-newsletter.png) no-repeat center center fixed ',
+              'linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/assets/bg-newsletter.webp) no-repeat center center fixed ',
             backgroundSize: 'cover',
           }}
         >
